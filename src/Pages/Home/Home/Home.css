@@ -1,45 +1,114 @@
-.image-wrapper {
+.home-wrapper {
     position: relative;
     width: 100%;
-    height: 800px;
-    overflow: hidden;
+    height: 100vh;
 }
 
-/* Dark Gray Overlay (Smooth Hold & Fade) */
-.overlay {
+/* ✅ Text Overlay Positioned Above Banner */
+.home-text-overlay {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(30, 30, 30, 1); /* Dark gray instead of black */
-    opacity: 1; /* Starts fully visible */
-    z-index: 10; /* Covers the entire screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 20;
 }
 
-/* Image Container */
-.image-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    width: 100%;
-    height: 100%;
+/* ✅ First Text - Middle Left */
+.home-text-left {
+    position: absolute;
+    top: 38%;
+    left: 5%;
+    color: white;
+    width: 40%;
+    word-wrap: break-word;
 }
 
-/* Image Pieces */
-.image-piece {
-    background-image: url("../../../assets/images/home-banner.jpg");
-    background-size: 400% 200%;
-    width: 100%;
-    height: 100%;
-    transform: scale(1.5); /* Initially zoomed in */
-    position: relative;
+.word {
+    display: inline-block; /* ✅ Keeps words intact */
+    white-space: nowrap; /* ✅ Prevents breaking between letters */
 }
 
-/* Position each part */
-.image-piece:nth-child(1) { background-position: 0% 0%; }
-.image-piece:nth-child(2) { background-position: 33.3% 0%; }
-.image-piece:nth-child(3) { background-position: 66.6% 0%; }
-.image-piece:nth-child(4) { background-position: 100% 0%; }
-.image-piece:nth-child(5) { background-position: 0% 100%; }
-.image-piece:nth-child(6) { background-position: 33.3% 100%; }
-.image-piece:nth-child(7) { background-position: 66.6% 100%; }
-.image-piece:nth-child(8) { background-position: 100% 100%; }
+/* ✅ Fix Word Spacing */
+.word + .word {
+    margin-left: 0.3rem; /* ✅ Keeps words spaced correctly */
+}
+
+/* ✅ Letter Fade-In Effect (Fixed Smoother Transition) */
+.letter {
+    display: inline-block; /* ✅ Allows GSAP transformations */
+    opacity: 0;
+}
+
+.animated-text {
+    font-size: 4rem;
+    font-weight: bold;
+    line-height: 4rem;
+}
+
+/* ✅ Second Text - Below & Right */
+.home-text-right {
+    position: absolute;
+    top: 80%;
+    right: 5%;
+    color: white;
+    width: 35%;
+}
+
+.animated-subtext {
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+
+/* ✅ Responsive Fixes */
+@media (max-width: 1024px) {
+    .home-text-left {
+        top: 40%;
+        left: 4%;
+        width: 50%;
+    }
+
+    .animated-text {
+        font-size: 2.7rem;
+        line-height: 3.2rem;
+    }
+
+    .home-text-right {
+        top: 85%;
+        right: 4%;
+        width: 45%;
+    }
+
+    .animated-subtext {
+        font-size: 1rem;
+    }
+}
+
+/* ✅ Small Screens (Phones) */
+@media (max-width: 768px) {
+    .home-text-left {
+        top: 40%;
+        left: 5%;
+        width: 60%;
+    }
+
+    .animated-text {
+        font-size: 2rem;
+        line-height: 2rem;
+    }
+
+    .home-text-right {
+        top: 85%;
+        right: 5%;
+        width: 30%;
+        text-align: left;
+    }
+
+    .animated-subtext {
+        font-size: 0.7rem;
+    }
+}
