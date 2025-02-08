@@ -9,8 +9,8 @@ const texts = [
 ];
 
 const subtexts = [
-  "Sophisticated craftsmanship for modern living.",
-  "Designs that blend tradition with innovation.",
+  "Sophisticated craftsmanship for modern living. Grab the best value products for you money",
+  "Designs that blend tradition with innovation. We design every project as a one-off",
 ];
 
 const TextAnimations = ({ animationCycle }) => {
@@ -21,25 +21,25 @@ const TextAnimations = ({ animationCycle }) => {
   useEffect(() => {
     if (!textContainerRef.current || !textRef.current || !subTextRef.current) return;
 
-    // ✅ Ensure left text starts visible
+    // Ensure left text starts visible
     gsap.set(textContainerRef.current, { opacity: 1, y: 0 });
 
-    // ✅ Ensure right text starts off-screen (to the right)
+    // Ensure right text starts off-screen (to the right)
     gsap.set(subTextRef.current, { opacity: 0, x: 50 });
 
     const letters = textRef.current.querySelectorAll(".letter");
     const tl = gsap.timeline();
 
-    // ✅ Animate Left Text (Main Title)
+    // Animate Left Text (Main Title)
     tl.set(letters, { opacity: 0, y: 12 })
       .to(letters, { opacity: 1, y: 0, duration: 0.5, stagger: 0.04, ease: "back.out(0.1)" }, "<")
-      .to({}, { duration: 7.2 }) // ✅ Keeps text visible longer
+      .to({}, { duration: 7 }) // ✅ Keeps text visible longer
       .to(letters, { opacity: 0, y: 12, duration: 0.5, stagger: 0.02, ease: "power2.inOut" });
 
-    // ✅ Animate Right Text (Subtext)
+    // Animate Right Text (Subtext)
     gsap.to(subTextRef.current, {
       opacity: 1,
-      x: 0, // ✅ Moves into view from right
+      x: 0, // Moves into view from right
       duration: 0.8,
       ease: "power2.out",
     });
@@ -52,7 +52,7 @@ const TextAnimations = ({ animationCycle }) => {
         duration: 0.8,
         ease: "power2.inOut",
       });
-    }, 9000); // ✅ Stays longer than the left text (original was 7500ms)
+    }, 9000); // how long it will stay
 
     return () => tl.kill();
   }, [animationCycle]);
@@ -61,7 +61,7 @@ const TextAnimations = ({ animationCycle }) => {
     <div className="home-text-overlay">
       {/* Left Text (Main Title) */}
       <div className="home-text-left" ref={textContainerRef}>
-        <h1 className="animated-text">
+        <h1 className="animated-text font-syne">
           <span className="text-wrapper" ref={textRef}>
             {texts[animationCycle % texts.length]
               .split(" ")
@@ -79,7 +79,7 @@ const TextAnimations = ({ animationCycle }) => {
 
       {/* Right Text (Subtext) */}
       <div className="home-text-right" ref={subTextRef}>
-        <h2 className="animated-subtext">
+        <h2 className="animated-subtext font-raleway">
           {subtexts[animationCycle % subtexts.length]}
         </h2>
       </div>

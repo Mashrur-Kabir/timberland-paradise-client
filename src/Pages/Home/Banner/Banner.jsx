@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import "./Banner.css";
 import PropTypes from 'prop-types';
-import banner1 from "../../../assets/images/home-banner.jpg";
-import banner2 from "../../../assets/images/home-banner2.jpg";
+import banner1 from "../../../assets/home-banner/home-banner.jpg";
+import banner2 from "../../../assets/home-banner/home-banner2.jpg";
 
 
 const images = [banner1, banner2];
@@ -12,7 +12,7 @@ const Banner = ({ animationCycle }) => {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
-    setCurrentImage(animationCycle % images.length); // ✅ Ensure correct image switching
+    setCurrentImage(animationCycle % images.length); // Ensure correct image switching
 
     const tl = gsap.timeline();
 
@@ -29,7 +29,7 @@ const Banner = ({ animationCycle }) => {
       .to(".overlay", { opacity: 0, duration: 1, ease: "power2.inOut" });
 
     return () => tl.kill();
-  }, [animationCycle]); // ✅ Ensures it updates when animationCycle changes
+  }, [animationCycle]); // Ensures it updates when animationCycle changes
 
   return (
     <div className="image-wrapper">

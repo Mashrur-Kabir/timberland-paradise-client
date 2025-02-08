@@ -1,0 +1,157 @@
+/* Navbar Base Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    background-color: transparent;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Higher than the banner */
+    border-bottom: none;
+  }
+
+  .navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-logo-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .navbar-logo-text {
+    color: white;
+    font-size: 25px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  /* Navbar Links */
+  .navbar-links {
+    display: flex;
+    list-style: none;
+  }
+  
+  .navbar-links-open {
+    display: none; /* Prevent links from being displayed in medium/small screens */
+  }
+  
+  .navbar-link-item {
+    position:relative;
+    margin: 0 15px;
+    padding: 0;
+  }
+  
+  .navbar-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    position: relative; /* ✅ Ensures underline is positioned relative to the link */
+    display: inline-block;
+  }
+  
+  .navbar-link:hover .underline,
+  .navbar-link.active .underline {
+    width: 100%;
+    opacity: 1;
+  }
+  
+  .underline {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    background-color: white;
+    width: 0%;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+  
+  /* Menu Button (Only Visible on Medium/Small Screens) */
+  .menu {
+    display: none;
+  }
+  
+  .icon-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+  }
+  
+  /* Navbar Overlay */
+  .navbar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+    z-index: 999; /* Below the navbar but above the banner */
+    transition: height 0.5s ease-in-out;
+  }
+  
+  .navbar-overlay-open {
+    height: 100%; /* Smoothly expands to full screen */
+  }
+  
+  .overlay-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    list-style: none;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards 0.5s;
+  }
+  
+  .overlay-link-item {
+    margin: 15px 0;
+  }
+  
+  .overlay-link {
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s forwards 0.5s;
+  }
+  
+  .overlay-link.active {
+    font-weight: bold;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 1024px) {
+    .navbar-links {
+      display: none;
+    }
+  
+    .menu {
+      display: block;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+  
