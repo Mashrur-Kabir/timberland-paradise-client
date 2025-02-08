@@ -4,7 +4,6 @@
     height: 100vh;
 }
 
-/* ✅ Text Overlay Positioned Above Banner */
 .home-text-overlay {
     position: absolute;
     top: 0;
@@ -15,7 +14,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    z-index: 20;
+    z-index: 100; /* ✅ Increased to ensure text is above the image */
+    color: white; /* ✅ Ensures text is visible */
 }
 
 /* ✅ First Text - Middle Left */
@@ -48,6 +48,7 @@
     font-size: 4rem;
     font-weight: bold;
     line-height: 4rem;
+    opacity: 1;
 }
 
 /* ✅ Second Text - Below & Right */

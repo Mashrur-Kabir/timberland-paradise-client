@@ -22,6 +22,7 @@
     z-index: 10;
 }
 
+
 /* Image Container: 5 columns x 2 rows (10 pieces) */
 .image-container {
     display: grid;
