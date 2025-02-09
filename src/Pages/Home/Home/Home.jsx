@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Banner from "./../Banner/Banner";
 import TextAnimations from "../TextAnimations/TextAnimations";
+import Intro from "../Intro/Intro";
 
 const ANIMATION_CYCLE_DURATION = 10000; // 10 seconds, adjust if needed
 
@@ -19,6 +20,7 @@ const Home = () => {
     <div className="home-wrapper">
       <Banner animationCycle={animationCycle} />
       <TextAnimations animationCycle={animationCycle}></TextAnimations> 
+      <Intro></Intro>
     </div>
   );
 };

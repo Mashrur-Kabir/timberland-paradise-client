@@ -1,0 +1,147 @@
+/* Intro Section Styles */
+.intro-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to stack on smaller screens */
+    gap: 20px;
+    justify-content: center;
+    align-items: stretch;
+    padding: 90px 20px;
+    background-color: #000;
+    color: white;
+  }
+  
+  /* Columns (default: side-by-side) */
+  .intro-left-column,
+  .intro-right-column {
+    flex: 1 1 48%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Ensure the right column’s children spread out vertically with gap in-between */
+  .intro-right-column {
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  /* doable work with small size device */
+  @media (max-width: 768px) {
+    .intro-section {
+        flex-direction: column;
+        align-items: center;
+        padding: 90px 60px;
+        position: relative;
+    }
+
+    .intro-left-column,
+    .intro-right-column {
+        position: relative;
+    }
+
+    .intro-image-left {
+        position: absolute;
+        top: 200px;
+        left: 10px;
+        z-index: 2;
+        transform: rotate(-30deg); /* Slight tilt for effect */
+        border: 3px solid white;
+        border-radius: 8px;
+    }
+
+    .intro-image-right {
+        position: relative;
+        left: 60px;
+        margin-top: 40px; /* Creates stacking effect */
+        transform: translateY(80px) translateX(140px); /* Offsets image to resemble copy icon */
+        border: 3px solid white;
+        border-radius: 8px;
+    }
+
+    .intro-description {
+        text-align: center;
+        max-width: 80%;
+        font-size: 0.8rem !important;
+    }
+
+    .intro-title {
+        font-size: 2rem !important;
+        font-weight: bold;
+        line-height: 1.4;
+    }
+
+}
+  
+
+  /* padding for medium screen */
+  @media (min-width: 769px) and (max-width: 1180px) {
+    .intro-section {
+       padding: 90px 35px;
+    }
+ }
+  
+  /* Fluid Image Sizing */
+  /* 
+    Using clamp(min, preferred, max) lets the height change fluidly 
+    as the viewport changes while staying within a defined range.
+  */
+  .intro-image {
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* First image: height fluidly scales between 300px and 400px */
+  .intro-image.img1 {
+    height: clamp(400px, 25vw, 400px);
+    width: clamp(365px, 25vw, 400px);
+  }
+  
+  /* Second image: height fluidly scales between 400px and 550px */
+  .intro-image.img2 {
+    height: clamp(550px, 35vw, 550px);
+    width: clamp(450px, 25vw, 460px);
+  }
+  
+  /* Optionally, limit the maximum width of columns and image for very large screens */
+  @media (min-width: 1200px) {
+    .intro-left-column,
+    .intro-right-column {
+      max-width: 500px; /* Adjust as needed */
+    }
+    .intro-image.img1 {
+        max-width: clamp(250px, 25vw, 400px);
+      }
+  }
+  
+  /* Additional Element Styles */
+  .intro-content {
+    text-align: left;
+  }
+  
+  .intro-subtitle {
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: #aaa;
+    text-transform: uppercase;
+  }
+  
+  .intro-title {
+    font-size: 38px;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+  
+  .intro-image-left {
+    margin-top: 60px;
+    margin-left: auto; /* Pushes the container to the right */
+  }
+  
+  .intro-description {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ccc;
+    max-width: clamp(450px, 25vw, 460px);
+  }
+  
