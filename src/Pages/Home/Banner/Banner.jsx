@@ -21,7 +21,7 @@ const Banner = ({ animationCycle }) => {
     tl.set(".image-piece", { opacity: 1, scale: 1.5 });
 
     tl.to(".image-piece", { scale: 1, duration: 1.2, ease: "power2.inOut" })
-      .to(".image-container", { scale: 1.1, duration: 8, ease: "power1.inOut" })
+      .to(".image-container", { scale: 1.2, duration: 10, ease: "power1.inOut" })
       .to(".overlay", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
       .call(() => {
         setCurrentImage((prev) => (prev + 1) % images.length);

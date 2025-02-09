@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const texts = [
   "Minimalist designs for luxurious standards",
-  "Timeless aesthetics for modern spaces",
+  "Timeless elegance for your modern spaces",
 ];
 
 const subtexts = [
@@ -40,7 +40,7 @@ const TextAnimations = ({ animationCycle }) => {
     gsap.to(subTextRef.current, {
       opacity: 1,
       x: 0, // Moves into view from right
-      duration: 0.8,
+      duration: 2,
       ease: "power2.out",
     });
 

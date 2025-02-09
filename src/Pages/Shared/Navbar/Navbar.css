@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 90px 40px 0;
     background-color: transparent;
     height: 60px;
     position: fixed;
@@ -101,7 +101,8 @@
   .navbar-overlay-open {
     height: 100%; /* Smoothly expands to full screen */
   }
-  
+
+  /* overlay */
   .overlay-links {
     display: flex;
     flex-direction: column;
@@ -121,13 +122,79 @@
     color: white;
     font-size: 18px;
     text-decoration: none;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeUp 0.5s forwards 0.5s;
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
   }
   
-  .overlay-link.active {
+  .overlay-link:hover .underline,
+  .overlay-link.active .underline {
+    width: 100%;
+    opacity: 1;
     font-weight: bold;
+  }
+
+  .overlay-link .underline {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    background-color: white;
+    width: 0%;
+    transition: width 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+  }
+
+  /* Navbar that appears on top of overlay */
+  .overlay-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px 40px 0;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays above everything in the overlay */
+  }
+  
+  .overlay-navbar-logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .overlay-navbar-logo-image {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .overlay-navbar-logo-text {
+    color: white;
+    font-size: 25px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+
+  .onText{
+    color: white;
+    font-size: 25px;
+    margin-left: 10px;
+  }
+  
+  /* overlay closing */
+  .close-overlay {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.5s ease-in-out;
+  }
+  
+  .navbar-overlay-open .close-overlay {
+    transform: translateX(-30px); /* Moves to normal position */
+    opacity: 1;
   }
   
   /* Responsive Styles */

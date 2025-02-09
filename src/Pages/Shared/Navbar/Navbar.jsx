@@ -4,13 +4,21 @@ import './Navbar.css';
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { HiMenu } from "react-icons/hi";
+import { IoMdClose } from "react-icons/io";
 import comLogo from '../../../assets/logo/company-logo.png';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+    if (!isMenuOpen) AOS.init({ duration: 1000, once: true }); // Initialize AOS when opening the menu
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -35,7 +43,7 @@ const Navbar = () => {
         <ul className={`navbar-links font-syne ${isMenuOpen ? "navbar-links-open" : ""}`}>
             {[
             { name: "Home", path: "/" },
-            { name: "Pages", path: "/pages" },
+            { name: "Pages", path: "./pages" },
             { name: "Portfolio", path: "/portfolio" },
             { name: "Blog", path: "/blog" },
             { name: "Shop", path: "/shop" },
@@ -68,29 +76,54 @@ const Navbar = () => {
 
         {/* Overlay for Medium/Small Screens */}
         <div className={`navbar-overlay ${isMenuOpen ? "navbar-overlay-open" : ""}`}>
-            <ul className="overlay-links font-syne">
-            {[
-                { name: "Home", path: "/" },
-                { name: "Pages", path: "/pages" },
-                { name: "Portfolio", path: "/portfolio" },
-                { name: "Blog", path: "/blog" },
-                { name: "Shop", path: "/shop" },
-            ].map((link, index) => (
-                <li key={index} className="overlay-link-item">
-                <NavLink
-                    to={link.path}
-                    className={({ isActive }) =>
-                    isActive
-                        ? "overlay-link active"
-                        : "overlay-link"
-                    }
-                    onClick={toggleMenu}
+          {isMenuOpen && (
+            <div className="overlay-navbar">
+              <div className="overlay-navbar-logo">
+                <img
+                  src={comLogo}
+                  alt="Logo"
+                  className="overlay-navbar-logo-image"
+                />
+                <span className="overlay-navbar-logo-text font-syne">Timberland</span>
+              </div>
+              <div className="flex items-center">
+                <p className="font-raleway onText" data-aos="fade-down">Close</p>
+                <button
+                  className="icon-button close-overlay"
+                  data-aos="fade-right"
+                  data-aos-delay="500"
+                  onClick={closeMenu}
                 >
-                    {link.name}
+                  <IoMdClose className="text-3xl" />
+                </button>
+              </div>
+            </div>
+          )}
+
+          <ul className="overlay-links font-syne">
+            {[
+              { name: "Home", path: "/" },
+              { name: "Pages", path: "/pages" },
+              { name: "Portfolio", path: "/portfolio" },
+              { name: "Blog", path: "/blog" },
+              { name: "Shop", path: "/shop" },
+            ].map((link, index) => (
+              <li key={index} className="overlay-link-item">
+                <NavLink
+                  to={link.path}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "overlay-link active"
+                      : "overlay-link"
+                  }
+                  onClick={closeMenu}
+                >
+                  {link.name}
+                  <span className="underline"></span>
                 </NavLink>
-                </li>
+              </li>
             ))}
-            </ul>
+          </ul>
         </div>
       </div>
     </nav>
