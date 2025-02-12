@@ -7,7 +7,7 @@ import intro2 from '../../../assets/images/intro2.jpg';
 
 const Intro = () => {
   React.useEffect(() => {
-    AOS.init({ duration: 1200, once: true });
+    AOS.init({ duration: 1500 });
   }, []);
 
   return (

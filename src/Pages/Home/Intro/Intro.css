@@ -43,7 +43,7 @@
         top: 200px;
         left: 10px;
         z-index: 2;
-        transform: rotate(-30deg); /* Slight tilt for effect */
+        transform: rotate(-15deg) translateX(-10px); /* Adjusted tilt and position */
         border: 3px solid white;
         border-radius: 8px;
     }
@@ -52,7 +52,7 @@
         position: relative;
         left: 60px;
         margin-top: 40px; /* Creates stacking effect */
-        transform: translateY(80px) translateX(140px); /* Offsets image to resemble copy icon */
+        transform: translateY(50px) translateX(20px); /* Offsets image to resemble copy icon */
         border: 3px solid white;
         border-radius: 8px;
     }
@@ -64,7 +64,7 @@
     }
 
     .intro-title {
-        font-size: 2rem !important;
+        font-size: 1.9rem !important;
         font-weight: bold;
         line-height: 1.4;
     }
