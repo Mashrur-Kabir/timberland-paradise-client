@@ -3,6 +3,7 @@ import Banner from "./../Banner/Banner";
 import TextAnimations from "../TextAnimations/TextAnimations";
 import Intro from "../Intro/Intro";
 import StatsSection from "../StatsSection/StatsSection";
+import Promo from "../Promo/Promo";
 
 const ANIMATION_CYCLE_DURATION = 10000; // 10 seconds, adjust if needed
 
@@ -23,6 +24,7 @@ const Home = () => {
       <TextAnimations animationCycle={animationCycle}></TextAnimations> 
       <Intro></Intro>
       <StatsSection></StatsSection>
+      <Promo></Promo>
     </div>
   );
 };
