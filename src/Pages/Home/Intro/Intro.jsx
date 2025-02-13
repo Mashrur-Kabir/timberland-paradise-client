@@ -14,7 +14,7 @@ const Intro = () => {
     <section className="intro-section">
       <div className="intro-left-column">
         <div className="intro-content">
-          <p className="intro-subtitle font-raleway" data-aos="fade-down">
+          <p className="intro-subtitle font-ysab" data-aos="fade-down">
             WHAT WE DO
           </p>
           <h1 className="intro-title font-syne" data-aos="fade-right">
@@ -37,7 +37,7 @@ const Intro = () => {
             className="intro-image img2"
           />
         </div>
-        <p className="intro-description font-raleway" data-aos="fade-left">
+        <p className="intro-description font-quicksand" data-aos="fade-left">
           Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
           magna aliqua. Ut enim ad minim veniam, quis nostrud. Wiusmod tempor
           incididunt.

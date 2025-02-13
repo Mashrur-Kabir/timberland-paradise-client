@@ -79,7 +79,7 @@ const TextAnimations = ({ animationCycle }) => {
 
       {/* Right Text (Subtext) */}
       <div className="home-text-right" ref={subTextRef}>
-        <h2 className="animated-subtext font-raleway">
+        <h2 className="animated-subtext font-ysab">
           {subtexts[animationCycle % subtexts.length]}
         </h2>
       </div>

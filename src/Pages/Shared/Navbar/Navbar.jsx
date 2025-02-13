@@ -87,7 +87,7 @@ const Navbar = () => {
                 <span className="overlay-navbar-logo-text font-syne">Timberland</span>
               </div>
               <div className="flex items-center">
-                <p className="font-raleway onText" data-aos="fade-down">Close</p>
+                <p className="font-quicksand onText" data-aos="fade-down">Close</p>
                 <button
                   className="icon-button close-overlay"
                   data-aos="fade-right"

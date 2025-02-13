@@ -8,8 +8,9 @@ export default {
     extend: {
       fontFamily: {
         syne: ["Syne", "serif"],
-        raleway: ["Raleway", "sans-serif"],
         friz: ["Friz", "serif"],
+        ysab: ["Ysabeau SC", 'serif'],
+        quicksand: ["Quicksand", 'serif']
       },
     },
   },
