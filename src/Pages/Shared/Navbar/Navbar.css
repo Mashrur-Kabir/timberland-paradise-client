@@ -3,10 +3,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 90px 40px 0;
+    padding: 90px 45px 0;
     background-color: transparent;
     height: 60px;
-    position: fixed;
+    position: relative;
     top: 0;
     width: 100%;
     z-index: 1000; /* Higher than the banner */
@@ -150,7 +150,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 70px 40px 0;
+    padding: 70px 45px 0;
     background-color: transparent;
     position: fixed;
     top: 0;
@@ -206,6 +206,13 @@
     .menu {
       display: block;
     }
+  }
+
+  @media (max-width: 768px) {
+    .overlay-links {
+      margin-top: 50px;
+    }
+  
   }
   
   /* Animations */

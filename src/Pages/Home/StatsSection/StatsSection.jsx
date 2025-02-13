@@ -30,15 +30,15 @@ const StatsSection = () => {
             initial="hidden"
             animate={controls}
             variants={{
-              hidden: { opacity: 0, y: 20 },
+              hidden: { opacity: 0, y: 30 },
               visible: {
                 opacity: 1,
                 y: 0,
-                transition: { duration: 1.4, ease: "easeOut", delay: index * 0.2 },
+                transition: { duration: 2, ease: "easeOut", delay: index * 0.2 },
               },
             }}
           >
-            <CountUp start={0} end={stat.number} duration={3.5} separator="," />
+            <CountUp start={0} end={stat.number} duration={6} separator=","/>
           </motion.span>
           <span className="stat-label">{stat.label}</span>
         </div>

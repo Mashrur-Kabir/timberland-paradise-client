@@ -1,9 +1,8 @@
 .promo-container {
     position: relative;
     width: 100%;
-    min-height: 500px; /* Instead of height: 500px */
     display: flex;
-    padding: 50px 0px 100px 0px; /* Should work now */
+    padding: 50px 0px 160px 0px; /* Should work now */
     align-items: center;
     justify-content: center;
     background-color: black;
@@ -14,7 +13,7 @@
     position: relative;
     width: 80%;
     width: 100%; /* Makes it fill the container */
-    height: 700px; /* Set a fixed height */
+    height: 400px; /* Set a fixed height */
     display: flex;
     align-items: center;
     position: relative;
@@ -26,6 +25,7 @@
     height: 100%; /* Ensure it fills the wrapper */
     object-fit: cover; /* Ensures full image is visible */
     border-radius: 10px;
+    opacity: 0.8;
 }
 
 /* Play Button */
@@ -116,6 +116,10 @@
         top: 10px;
         right: 10px;
     }
+
+    .promo-video-wrapper{
+        max-height: 300px;
+    }
 }
 
 @media (min-width: 1200px) {
@@ -123,6 +127,10 @@
         width: 50px;
         height: 50px;
         font-size: 28px;
+    }
+
+    .promo-video-wrapper{
+        min-height: 550px;
     }
 }
 
