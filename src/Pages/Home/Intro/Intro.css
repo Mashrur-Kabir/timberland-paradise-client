@@ -109,8 +109,12 @@
       max-width: 500px; /* Adjust as needed */
     }
     .intro-image.img1 {
-        max-width: clamp(250px, 25vw, 400px);
-      }
+      max-width: clamp(250px, 25vw, 400px);
+    }
+    .intro-section {
+      gap: 100px;
+    }
+  
   }
   
   /* Additional Element Styles */
@@ -119,7 +123,7 @@
   }
   
   .intro-subtitle {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     letter-spacing: 2px;
     margin-bottom: 10px;

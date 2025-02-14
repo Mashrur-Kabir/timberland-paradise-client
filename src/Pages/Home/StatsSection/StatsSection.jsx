@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import "./StatsSection.css";
 
 const stats = [
@@ -12,14 +12,17 @@ const stats = [
 ];
 
 const StatsSection = () => {
-  const controls = useAnimation();
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.5 });
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.5 });
+  const [key, setKey] = useState(0);
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible");
+      const interval = setInterval(() => {
+        setKey((prevKey) => prevKey + 1);
+      }, 10000);
+      return () => clearInterval(interval);
     }
-  }, [controls, inView]);
+  }, [inView]);
 
   return (
     <section className="stats-section font-syne" ref={ref}>
@@ -27,18 +30,11 @@ const StatsSection = () => {
         <div className="stat-item" key={index}>
           <motion.span
             className="stat-number"
-            initial="hidden"
-            animate={controls}
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 2, ease: "easeOut", delay: index * 0.2 },
-              },
-            }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: "easeOut", delay: index * 0.2 }}
           >
-            <CountUp start={0} end={stat.number} duration={6} separator=","/>
+            <CountUp key={key} start={0} end={stat.number} duration={4} separator="," />
           </motion.span>
           <span className="stat-label">{stat.label}</span>
         </div>
