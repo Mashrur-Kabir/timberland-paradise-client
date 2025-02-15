@@ -112,7 +112,7 @@ const Team = () => {
     delay: 200,
   });
 
-  const initialPositions = ['translateY(90px)', 'translateY(170px)', 'translateY(260px)'];
+  const initialPositions = ['translateY(60px)', 'translateY(120px)', 'translateY(180px)'];
 
   const springs = useSprings(
     teamMembers.length,
@@ -127,7 +127,7 @@ const Team = () => {
   );
 
   return (
-    <div ref={ref} className="bg-black text-white p-10 lg:px-60 text-center relative pb-28">
+    <div ref={ref} className="bg-black text-white p-10 lg:px-60 text-center relative pb-32">
       <animated.h2
         style={fadeInTitle}
         className="text-5xl font-bold font-syne absolute inset-x-0"
