@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { useSpring, useSprings, animated } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
-import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
 import { PropTypes } from 'prop-types';
+/* insta font */
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 import chelsea from '../../../assets/images/team/chelsea.jpg';
 import vince from '../../../assets/images/team/vince.jpg';
@@ -14,23 +16,21 @@ const teamMembers = [
   { image: anna, name: 'Anna Kinmann', role: 'Visualization Specialist' },
 ];
 
-// This component represents a single team member and its hover effect
 const TeamMember = ({ image, name, role, style }) => {
   const [hovered, setHovered] = useState(false);
 
-  // Define the icons you want to use
-  const icons = [FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn];
+  // For Instagram we use a placeholder string so we can treat it specially.
+  const icons = [FaFacebookF, FaTwitter, 'instagram', FaLinkedinIn];
 
-  // Define hover classes for each icon:
+  // Hover classes for non-Instagram icons.
   const iconHoverClasses = [
     'hover:text-blue-500', // Facebook
     'hover:text-sky-400',  // Twitter
-    // For Instagram, we apply a gradient background on hover.
-    'hover:text-transparent bg-clip-text hover:bg-gradient-to-r hover:from-yellow-400 hover:via-pink-500 hover:to-purple-600',
+    '',                    // Instagram – handled separately
     'hover:text-blue-700'  // LinkedIn
   ];
 
-  // Animate each icon in a wave-like effect on hover.
+  // Animate each icon with a simple wave effect.
   const iconsSprings = useSprings(
     icons.length,
     icons.map((_, i) => ({
@@ -39,7 +39,7 @@ const TeamMember = ({ image, name, role, style }) => {
         ? { opacity: 1, transform: 'translateY(0px)' }
         : { opacity: 0, transform: 'translateY(20px)' },
       config: { tension: 200, friction: 12 },
-      delay: hovered ? i * 100 : 0, // stagger each icon for a wave effect
+      delay: hovered ? i * 100 : 0,
     }))
   );
 
@@ -59,24 +59,42 @@ const TeamMember = ({ image, name, role, style }) => {
       <p className="text-gray-400 font-quicksand">{role}</p>
       {/* Icons container */}
       <div className="mt-4 flex justify-center space-x-4">
-        {iconsSprings.map((iconStyle, i) => {
-          const Icon = icons[i];
+      {iconsSprings.map((iconStyle, i) => {
+        if (i === 2) {
+          // For Instagram, we use a Font Awesome icon rendered as text.
           return (
             <animated.span
               key={i}
               style={iconStyle}
-              className={`cursor-pointer transition-colors duration-300 ${iconHoverClasses[i]}`}
+              className="cursor-pointer transition-colors duration-300 relative -top-1.5"
             >
-              <Icon size={20} className="fill-current" />
+              <span
+                className="text-white text-2xl transition-colors duration-300 
+                          hover:text-transparent bg-clip-text 
+                          hover:bg-gradient-to-tr hover:from-yellow-400 hover:via-pink-600 hover:to-purple-700"
+              >
+                <i className="fab fa-instagram"></i>
+              </span>
             </animated.span>
           );
-        })}
+        }
+        // For the other icons, use react-icons components.
+        const Icon = icons[i];
+        return (
+          <animated.span
+            key={i}
+            style={iconStyle}
+            className={`cursor-pointer transition-colors duration-300 ${iconHoverClasses[i]}`}
+          >
+            <Icon size={20} fill="currentColor" className="fill-current" />
+          </animated.span>
+        );
+      })}
       </div>
     </animated.div>
   );
 };
 
-// Add PropTypes for TeamMember component
 TeamMember.propTypes = {
   image: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -87,7 +105,6 @@ TeamMember.propTypes = {
 const Team = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.5 });
 
-  // Title animation
   const fadeInTitle = useSpring({
     from: { opacity: 0, transform: 'translateY(100px)', zIndex: 0 },
     to: inView ? { opacity: 1, transform: 'translateY(0px)', zIndex: 10 } : {},
@@ -95,10 +112,8 @@ const Team = () => {
     delay: 200,
   });
 
-  // Each team member's container starts with a different initial translateY
   const initialPositions = ['translateY(90px)', 'translateY(170px)', 'translateY(260px)'];
 
-  // Animate the team member cards
   const springs = useSprings(
     teamMembers.length,
     teamMembers.map((_, i) => ({
@@ -107,7 +122,6 @@ const Team = () => {
         ? { opacity: 1, transform: 'translateY(0px)' }
         : { opacity: 0, transform: initialPositions[i] },
       config: { mass: 1, tension: 120, friction: 30, duration: 800 },
-      // Adjust delay so they start shortly after the title animation
       delay: inView ? 750 + i * 100 : 0,
     }))
   );
@@ -116,11 +130,14 @@ const Team = () => {
     <div ref={ref} className="bg-black text-white p-10 lg:px-60 text-center relative pb-28">
       <animated.h2
         style={fadeInTitle}
-        className="text-5xl font-bold font-syne mb-10 absolute inset-x-0"
+        className="text-5xl font-bold font-syne absolute inset-x-0"
       >
+        <p className="uppercase tracking-widest text-gray-400 mb-2 font-ysab font-bold text-sm">
+          Our Team
+        </p>
         Designers’ Studio
       </animated.h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative z-20 pt-24">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 relative z-20 pt-28">
         {springs.map((animation, index) => (
           <TeamMember
             key={index}
@@ -136,11 +153,3 @@ const Team = () => {
 };
 
 export default Team;
-
-// You're seeing two components because the code is divided into a parent and a child component:
-
-// TeamMember:
-// This is a reusable component that represents a single team member's card. It includes the image, name, role, and the hover animation for the social icons.
-
-// Team:
-// This is the parent component that manages the overall layout, title animation, and renders a grid of TeamMember components—one for each team member in the teamMembers array.

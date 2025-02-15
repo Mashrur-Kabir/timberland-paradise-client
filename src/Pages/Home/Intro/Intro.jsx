@@ -7,7 +7,7 @@ import intro2 from '../../../assets/images/intro/intro2.jpg';
 
 const Intro = () => {
   React.useEffect(() => {
-    AOS.init({ duration: 1500 });
+    AOS.init({ duration: 1000 });
   }, []);
 
   return (
@@ -30,7 +30,7 @@ const Intro = () => {
         </div>
       </div>
       <div className="intro-right-column">
-        <div className="intro-image-right" data-aos="fade-up" data-aos-delay="200">
+        <div className="intro-image-right" data-aos="fade-left" data-aos-delay="200">
           <img
             src={intro2}
             alt="Modern Dining Room"
