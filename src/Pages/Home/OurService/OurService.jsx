@@ -20,7 +20,7 @@ const OurService = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   return (
-    <section className="bg-black text-white p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:px-64 pb-18">
+    <section className="bg-black text-white p-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:px-64 pb-20">
       <div data-aos="fade-right">
         <p className="uppercase tracking-widest text-gray-400 mb-2 font-ysab font-bold text-sm">Interior Services</p>
         <h2 className="text-5xl font-bold mb-4 font-syne">What we offer</h2>

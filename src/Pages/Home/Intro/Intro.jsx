@@ -2,8 +2,8 @@ import React from "react";
 import "./Intro.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import intro1 from '../../../assets/images/intro1.jpg';
-import intro2 from '../../../assets/images/intro2.jpg';
+import intro1 from '../../../assets/images/intro/intro1.jpg';
+import intro2 from '../../../assets/images/intro/intro2.jpg';
 
 const Intro = () => {
   React.useEffect(() => {

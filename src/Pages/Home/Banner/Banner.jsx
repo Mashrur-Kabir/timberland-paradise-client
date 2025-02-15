@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 import "./Banner.css";
 import PropTypes from 'prop-types';
-import banner1 from "../../../assets/home-banner/home-banner.jpg";
-import banner2 from "../../../assets/home-banner/home-banner2.jpg";
+import banner1 from "../../../assets/images/home-banner/home-banner.jpg";
+import banner2 from "../../../assets/images/home-banner/home-banner2.jpg";
 
 
 const images = [banner1, banner2];

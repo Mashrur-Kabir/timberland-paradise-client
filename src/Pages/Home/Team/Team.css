@@ -1,0 +1,11 @@
+/* Custom CSS for Instagram icon gradient on hover */
+.instagram-hover {
+    color: white; /* default icon color */
+  }
+  
+  .instagram-hover:hover {
+    background: linear-gradient(to top, #a855f7, #3b82f6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  

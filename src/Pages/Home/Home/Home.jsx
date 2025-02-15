@@ -6,6 +6,8 @@ import StatsSection from "../StatsSection/StatsSection";
 import Promo from "../Promo/Promo";
 import OurService from "../OurService/OurService";
 import TagLine from "../TagLine/TagLine";
+import Apartments from "../Apartments/Apartments";
+import Team from "../Team/Team";
 
 const ANIMATION_CYCLE_DURATION = 10000; // 10 seconds, adjust if needed
 
@@ -29,6 +31,8 @@ const Home = () => {
       <Promo></Promo>
       <OurService></OurService>
       <TagLine></TagLine>
+      <Apartments></Apartments>
+      <Team></Team>
     </div>
   );
 };
