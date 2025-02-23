@@ -8,6 +8,7 @@
     padding: 90px 20px;
     background-color: #000;
     color: white;
+    margin-top: -90px;
   }
   
   /* Columns (default: side-by-side) */
@@ -70,7 +71,6 @@
     }
 
 }
-  
 
   /* padding for medium screen */
   @media (min-width: 769px) and (max-width: 1180px) {
