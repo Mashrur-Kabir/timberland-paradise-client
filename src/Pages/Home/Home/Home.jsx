@@ -41,23 +41,31 @@ const Home = () => {
   const textContainerRef = useRef(null);
   const subTextRef = useRef(null);
 
-  // Banner animation (merging Banner.jsx functionality)
+  // Banner animation
   useEffect(() => {
     setCurrentImage(animationCycle % images.length);
     const tl = gsap.timeline();
-
-    tl.set(".overlay", { opacity: 0 });
+  
+    // Set up banner image styles and transition to next image
+    tl.set(".overlay", { backgroundColor: "black", opacity: 0 });
     tl.set(".image-container", { scale: 1 });
     tl.set(".image-piece", { opacity: 1, scale: 1.5 });
-
-    tl.to(".image-piece", { scale: 1, duration: 1.2, ease: "power2.inOut" })
-      .to(".image-container", { scale: 1.2, duration: 10, ease: "power1.inOut" })
-      .to(".overlay", { opacity: 1, duration: 0.5, ease: "power2.inOut" })
+  
+    // Animate image pieces (from 1.5 scale to 1) immediately
+    tl.to(".image-piece", { scale: 1, duration: 1.2, ease: "power2.inOut" });
+  
+    // Run container scaling concurrently over the full cycle
+    tl.to(".image-container", { scale: 1.2, duration: 10, ease: "power1.inOut" });
+  
+    // At 7 seconds into the cycle, fade in the black overlay over 1.5 sec
+    tl.to(".overlay", { opacity: 1, duration: 1.5, ease: "power2.inOut" }, 8.5)
+      // Once overlay is fully opaque, update the image
       .call(() => {
         setCurrentImage((prev) => (prev + 1) % images.length);
       })
-      .to(".overlay", { opacity: 0, duration: 1, ease: "power2.inOut" });
-
+      // Fade out the overlay over the remaining 1.5 sec (ending at 10 sec)
+      .to(".overlay", { opacity: 0, duration: 1.5, ease: "power2.inOut" });
+  
     return () => tl.kill();
   }, [animationCycle, images]);
 
